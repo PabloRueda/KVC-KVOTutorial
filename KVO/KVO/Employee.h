@@ -21,6 +21,8 @@
 @property (copy, nonatomic) NSString *surname;
 @property (strong, nonatomic) NSArray *accounts;
 
-@property (readonly, nonatomic) NSString *fullname;
+- (NSString *)fullname;
+
+- (void)addAccount:(NSString*)account;
 
 @end

@@ -41,17 +41,22 @@
     
     NSDictionary *data = [self loadPList];
     
-    //Without KVO
+    //Without KVC
     Employee *employee = [self importDataWithoutKVC:data];
     [self showData:employee];
     NSDictionary *exportedEmployee = [self exportDataWithoutKVC:employee];
     NSLog(@"My data exported: %@", exportedEmployee);
     
-    //With KVO
+    //With KVC
     employee = [self importDataWithKVC:data];
     [self showData:employee];
     exportedEmployee = [self exportDataWithKVC:employee];
     NSLog(@"My data exported: %@", exportedEmployee);
+    
+    //With KVC we can use Collection Operators (avg, max, sum...):
+    NSNumber *numberOfAccounts = [employee valueForKeyPath:@"accounts.@count"];
+    NSLog(@"Number of accounts: %@", numberOfAccounts);
+    
 }
 
 #pragma mark - NO KVC
